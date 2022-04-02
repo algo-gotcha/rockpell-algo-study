@@ -58,6 +58,19 @@ class LinkedListTest {
     }
 
     @Test
+    fun `(remove) int 노드 3개 추가, 존재하지 않는 값 제거`() {
+        val list = LinkedList<Int>()
+        val expectedList = mutableListOf(42, 24)
+
+        list.push(42)
+        list.push(24)
+
+        list.remove(4224)
+
+        assertEquals(expectedList, list.toArray())
+    }
+
+    @Test
     fun `(isEmpty) int 노드 3개 추가, 3개 제거`() {
         val list = LinkedList<Int>()
 

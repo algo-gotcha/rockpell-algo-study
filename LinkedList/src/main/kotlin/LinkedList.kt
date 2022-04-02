@@ -42,9 +42,12 @@ class LinkedList<E> {
     }
 
     fun remove(data: E) {
-        var now = head ?: return
+        var now = head
 
-        while (true) {
+        if (now == null)
+            return
+
+        while (now != null) {
             if (now.data == data) {
                 val prevNode = now.prev
 
@@ -55,7 +58,7 @@ class LinkedList<E> {
                 size--
                 return
             }
-            now = now.next!!
+            now = now.next
         }
     }
 
