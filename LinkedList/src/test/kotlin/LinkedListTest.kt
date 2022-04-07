@@ -71,7 +71,7 @@ class LinkedListTest {
     }
 
     @Test
-    fun `(isEmpty) int 노드 3개 추가, 3개 제거`() {
+    fun `(size) int 노드 3개 추가, 3개 제거`() {
         val list = LinkedList<Int>()
 
         list.push(42)
@@ -82,7 +82,7 @@ class LinkedListTest {
         list.remove(24)
         list.remove(42)
 
-        assertEquals(true, list.isEmpty())
+        assertEquals(0, list.size)
     }
 
     @Test

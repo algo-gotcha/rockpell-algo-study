@@ -3,10 +3,6 @@ class LinkedList<E> {
     private var tail: Node<E>? = null
     var size = 0
 
-    fun isEmpty(): Boolean {
-        return size == 0
-    }
-
     fun toArray(): MutableList<E> {
         var nowNode = head
         val arr = mutableListOf<E>()
