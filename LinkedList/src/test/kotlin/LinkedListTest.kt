@@ -98,4 +98,31 @@ class LinkedListTest {
         assertEquals(24, list.pop())
         assertEquals(expectedList, list.toArray())
     }
+
+    @Test
+    fun `(pop) int 노드 1개 추가, 2개 제거`() {
+        val list = LinkedList<Int>()
+        val expectedList = mutableListOf<Int>()
+
+        list.push(42)
+
+        list.pop()
+        list.pop()
+
+        assertEquals(expectedList, list.toArray())
+        assertEquals(0, list.size)
+    }
+
+    @Test
+    fun `(pop) int 노드 1개 추가, 1개 제거, 1개 추가`() {
+        val list = LinkedList<Int>()
+        val expectedList = mutableListOf(42)
+
+        list.push(42)
+        list.pop()
+        list.push(42)
+
+        assertEquals(expectedList, list.toArray())
+        assertEquals(1, list.size)
+    }
 }

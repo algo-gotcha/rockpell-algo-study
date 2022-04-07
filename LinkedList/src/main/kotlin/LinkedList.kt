@@ -31,6 +31,14 @@ class LinkedList<E> {
     fun pop(): E? {
         val data = tail?.data
 
+        if (tail == null) return null
+        if (head == tail) {
+            head = null
+            tail = null
+            size = 0
+            return null
+        }
+
         tail?.prev?.next = null
         tail = tail?.prev
         size--
