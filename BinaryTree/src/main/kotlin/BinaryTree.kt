@@ -3,33 +3,49 @@ class BinaryTree {
     private var listForPrint = mutableListOf<Int>()
     var size = 0
 
-    fun push(data: Int) {
+    fun add(data: Int): Boolean {
         val newNode = Node(data)
 
         if (root == null) {
             root = newNode
-        } else {
-            pushRecursive(root!!, newNode)
+            size++
+            return true
         }
+        if (addLoop(newNode)) {
+            size++
+            return true
+        }
+        return false
     }
 
-    private fun pushRecursive(parentNode: Node<Int>, newNode: Node<Int>) {
-        if (parentNode.data > newNode.data) {
-            if (parentNode.left == null)
-                parentNode.left = newNode
-            else
-                pushRecursive(parentNode.left!!, newNode)
-        } else {
-            if (parentNode.right == null)
-                parentNode.right = newNode
-            else
-                pushRecursive(parentNode.right!!, newNode)
+    private fun addLoop(newNode: Node<Int>): Boolean {
+        var foundNode = root
+
+        while (foundNode != null) {
+            if (newNode.data < foundNode.data) {
+                if (foundNode.left != null)
+                    foundNode = foundNode.left
+                else {
+                    foundNode.left = newNode
+                    return true
+                }
+            } else if (newNode.data > foundNode.data) {
+                if (foundNode.right != null)
+                    foundNode = foundNode.right
+                else {
+                    foundNode.right = newNode
+                    return true
+                }
+            } else {
+                foundNode = null
+            }
         }
+        return false
     }
 
     fun inorderPrint(): MutableList<Int> {
         listForPrint.clear()
-        root?.let { inorderTraverse(it) };
+        root?.let { inorderTraverse(it) }
         return listForPrint
     }
 
@@ -39,4 +55,3 @@ class BinaryTree {
         nowNode.right?.let { inorderTraverse(it) }
     }
 }
-
