@@ -43,6 +43,62 @@ class BinaryTree {
         return false
     }
 
+    fun remove(data: Int): Node<Int>? {
+        val removed = removeRecursive(root, null, data)
+
+        if (removed != null)
+            size--
+        return removed
+    }
+
+    private fun searchMinNode(node: Node<Int>): Node<Int> {
+        if (node.left == null)
+            return node
+        else
+            return searchMinNode(node.left!!)
+    }
+
+    private fun removeRecursive(now: Node<Int>?, parent: Node<Int>?, data: Int): Node<Int>? {
+        var removed: Node<Int>?
+
+        if (now == null)
+            return null
+
+        if (now.data > data)
+            removed = removeRecursive(now.left, now, data)
+        else if (now.data < data)
+            removed = removeRecursive(now.right, now, data)
+        else {
+            removed = now
+
+            if (now.isLeafNode()) {
+                if (parent?.left == now)
+                    parent.left = null
+                else
+                    parent?.right = null
+            } else {
+                if (now.isFullChild()) {
+                    val minNode = searchMinNode(now.right!!)
+                    removed = removeRecursive(now, null, minNode.data)
+                    now.data = minNode.data
+                } else {
+                    val temp: Node<Int>?
+
+                    if (now.left != null)
+                        temp = now.left
+                    else
+                        temp = now.right
+
+                    if (parent!!.left == now)
+                        parent.left = temp
+                    else
+                        parent.right = temp
+                }
+            }
+        }
+        return removed
+    }
+
     fun inorderPrint(): MutableList<Int> {
         listForPrint.clear()
         root?.let { inorderTraverse(it) }
