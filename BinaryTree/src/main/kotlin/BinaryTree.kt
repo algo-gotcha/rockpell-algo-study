@@ -78,9 +78,9 @@ class BinaryTree {
                     parent?.right = null
             } else {
                 if (now.isFullChild()) {
-                    val minNode = searchMinNode(now.right!!)
-                    removed = removeRecursive(now, null, minNode.data)
-                    now.data = minNode.data
+                    var minNode = searchMinNode(now.right!!)
+                    var minNodeOfMinNode = removeRecursive(now, null, minNode.data)!!
+                    now.data = minNodeOfMinNode.data
                 } else {
                     val temp: Node<Int>?
 

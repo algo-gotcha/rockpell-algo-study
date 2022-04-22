@@ -72,12 +72,13 @@ class BinaryTreeTest {
         }
 
         tree.remove(34)
+
         assertEquals(expectedList, tree.inorderPrint())
         assertEquals(2, tree.size)
     }
 
     @Test
-    fun `(remove) 노드 4개, 자식 2개를 가진 노드 제거`() {
+    fun `(remove) 노드 4개, 자식 2개를 가진 노드 제거 - 루트 왼쪽 노드`() {
         val tree = BinaryTree()
         val initDataList = mutableListOf(42, 34, 12, 37)
         val expectedList = mutableListOf(12, 37, 42)
@@ -87,6 +88,38 @@ class BinaryTreeTest {
         }
 
         tree.remove(34)
+
+        assertEquals(expectedList, tree.inorderPrint())
+        assertEquals(3, tree.size)
+    }
+
+    @Test
+    fun `(remove) 노드 4개, 자식 2개를 가진 노드 제거 - 루트 오른쪽 노드`() {
+        val tree = BinaryTree()
+        val initDataList = mutableListOf(12, 34, 42, 37)
+        val expectedList = mutableListOf(12, 37, 42)
+
+        for (data in initDataList) {
+            tree.add(data)
+        }
+
+        tree.remove(34)
+
+        assertEquals(expectedList, tree.inorderPrint())
+        assertEquals(3, tree.size)
+    }
+
+    @Test
+    fun `(remove) 노드 4개, 자식 2개를 가진 노드 제거 - 루트 노드`() {
+        val tree = BinaryTree()
+        val initDataList = mutableListOf(42, 34, 48, 45)
+        val expectedList = mutableListOf(34, 45, 48)
+
+        for (data in initDataList) {
+            tree.add(data)
+        }
+
+        tree.remove(42)
 
         assertEquals(expectedList, tree.inorderPrint())
         assertEquals(3, tree.size)
