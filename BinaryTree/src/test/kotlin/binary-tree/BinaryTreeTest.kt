@@ -1,3 +1,4 @@
+import binary_tree.BinaryTree
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

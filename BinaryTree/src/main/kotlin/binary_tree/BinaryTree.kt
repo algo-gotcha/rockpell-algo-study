@@ -1,3 +1,5 @@
+package binary_tree
+
 class BinaryTree {
     private var root: Node<Int>? = null
     private var listForPrint = mutableListOf<Int>()

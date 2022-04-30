@@ -1,3 +1,4 @@
+import linked_list.LinkedList
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

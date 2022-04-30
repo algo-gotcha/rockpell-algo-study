@@ -1,3 +1,5 @@
+package binary_tree
+
 data class Node<Int>(var data: Int) {
     var left: Node<Int>? = null
     var right: Node<Int>? = null
