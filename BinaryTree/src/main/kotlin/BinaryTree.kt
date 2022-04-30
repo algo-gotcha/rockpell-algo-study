@@ -9,13 +9,11 @@ class BinaryTree {
         if (root == null) {
             root = newNode
             size++
-            return true
         }
-        if (addLoop(newNode)) {
-            size++
-            return true
-        }
-        return false
+        if (!addLoop(newNode))
+            return false
+        size++
+        return true
     }
 
     private fun addLoop(newNode: Node<Int>): Boolean {
