@@ -1,4 +1,4 @@
-package bst
+package ps
 
 class TargetNumber {
     fun solution(numbers: IntArray, target: Int): Int {

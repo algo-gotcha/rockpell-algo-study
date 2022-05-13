@@ -1,4 +1,4 @@
-package bst
+package ps
 
 import org.junit.jupiter.api.Test
 
